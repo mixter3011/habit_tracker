@@ -40,6 +40,7 @@ class _HomePageState extends State<HomePage> {
       builder: (context) {
         return MyAlertBox(
           controller: _newHabitNameController,
+          hintText: 'Enter Habit Name',
           onSave: saveNewHabit,
           onCancel: cancelDialogBox,
         );
@@ -75,6 +76,7 @@ class _HomePageState extends State<HomePage> {
       builder: (context) {
         return MyAlertBox(
           controller: _newHabitNameController,
+          hintText: todayHabitList[index][0],
           onSave: () => saveExistingHabit(index),
           onCancel: cancelDialogBox,
         ); 
@@ -87,6 +89,8 @@ class _HomePageState extends State<HomePage> {
       setState(() {
         todayHabitList[index][0] = _newHabitNameController.text;
       });
+      _newHabitNameController.clear();
+      Navigator.pop(context);
     }
 
     // delete habit
